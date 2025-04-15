@@ -1,0 +1,73 @@
+{% load static %}
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio | [Il Tuo Nome]</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+
+  <header>
+    <div>
+      <a href="{% url 'home' %}">
+        <img src="{% static 'images/logo_priesth13.ico' %}" alt="Logo" class="logo">
+      </a>
+    </div>
+  
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Portfolio</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <img src="{% static 'images/profile_mateo.jpg' %}" alt="Foto Profilo">
+    <div class="intro-text">
+      <h1>Mateo Prifti</h1>
+      <p>Full-Stack Web Developer con esperienza in Python, Django, JavaScript, HTML e CSS. Appassionato di sviluppo web e soluzioni scalabili.</p>
+      <button class="btn">Scopri di più</button>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="service-card">
+      <h3>xxxxxx</h3>
+      <p>xxxxxxxxxxxxxxxx.</p>
+    </div>
+    <div class="service-card">
+      <h3>xxxxxxxx</h3>
+      <p>Editing avanzato e creazione grafica per progetti digitali.</p>
+    </div>
+    <div class="service-card">
+      <h3>Web Development (Python, Django)</h3>
+      <p>Realizzazione di siti web responsivi con Django, HTML, CSS, JavaScript. Sviluppo di backend scalabili con Python.</p>
+    </div>
+  </section>
+
+  <section class="portfolio">
+    <h2>Featured Works</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="{% static 'port_mat/images/project1.jpg' %}" alt="Progetto 1">
+        <h4>xxxxxxxxx</h4>
+      </div>
+      <div class="portfolio-item">
+        <img src="{% static 'port_mat/images/project2.jpg' %}" alt="Progetto 2">
+        <h4>xxxxxxxxxxxxx</h4>
+      </div>
+      <div class="portfolio-item">
+        <img src="{% static 'port_mat/images/project3.jpg' %}" alt="Progetto 3">
+        <h4>xxxxxxxxxx</h4>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 - Il tuo nome. Tutti i diritti riservati.
+  </footer>
+
+</body>
+</html>
