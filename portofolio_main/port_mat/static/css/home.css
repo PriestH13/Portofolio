@@ -1,147 +1,246 @@
+/* ========== BASE ========== */
 body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #111;
+  color: #fff;
+  line-height: 1.6;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+}
+
+/* ========== HEADER & NAV ========== */
+header, footer {
+  background-color: #000;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 10px 15px;
+  font-size: 0.95em;
+}
+
+header div strong {
+  font-size: 30px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  margin-left: 10px;
+}
+
+/* ========== INTRO ========== */
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 60px 40px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.intro img {
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.intro-text {
+  max-width: 600px;
+  margin-left: 40px;
+}
+
+.intro-text h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.intro-text p {
+  font-size: 1.1em;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+/* ========== BUTTON ========== */
+.btn {
+  padding: 10px 25px;
+  background: #fff;
+  color: #000;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #ccc;
+}
+
+/* ========== SERVICES ========== */
+.services {
+  padding: 60px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  background-color: #181818;
+}
+
+.service-card {
+  background: #222;
+  padding: 20px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.service-card h3 {
+  margin-top: 10px;
+  color: #fff;
+}
+
+.service-card p {
+  color: #bbb;
+  font-size: 0.95em;
+}
+
+/* ========== PORTFOLIO ========== */
+.portfolio {
+  padding: 60px 40px;
+  background: #111;
+}
+
+.portfolio h2 {
+  margin-bottom: 30px;
+  font-size: 2em;
+  border-bottom: 2px solid #fff;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.portfolio-item {
+  background: #222;
+  border-radius: 6px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.portfolio-item h4 {
+  margin: 10px 0;
+  color: #fff;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  text-align: center;
+  font-size: 0.9em;
+  color: #aaa;
+  margin-top: 30px;
+}
+
+/* ========== MOBILE-FIRST DESIGN ========== */
+@media screen and (max-width: 768px) {
+  /* Header */
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header nav {
+    display: none;
+  }
+
+  /* Hamburger menu */
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .hamburger div {
+    width: 30px;
+    height: 4px;
+    background-color: #fff;
+    margin: 6px 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Mobile nav menu */
+  .nav.active {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .nav a {
+    display: block;
+    padding: 10px;
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #111;
-    color: #fff;
+    border-top: 1px solid #444;
   }
 
-  header, footer {
-    background-color: #000;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  header nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 0.95em;
-  }
-
+  /* Intro */
   .intro {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 60px 40px;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    padding: 40px 20px;
   }
 
   .intro img {
-    width: 300px;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-
-  .intro-text {
-    max-width: 600px;
-    margin-left: 40px;
-  }
-
-  .intro-text h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-  }
-
-  .intro-text p {
-    font-size: 1.1em;
-    color: #ccc;
+    width: 100%;
+    height: auto;
     margin-bottom: 20px;
   }
 
-  .btn {
-    padding: 10px 25px;
-    background: #fff;
-    color: #000;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background 0.3s;
+  .intro-text {
+    margin-left: 0;
+    max-width: 100%;
   }
 
-  .btn:hover {
-    background: #ccc;
+  .intro-text h1 {
+    font-size: 2em;
   }
 
+  .intro-text p {
+    font-size: 1em;
+  }
+
+  /* Services */
   .services {
-    padding: 60px 40px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-    background-color: #181818;
+    grid-template-columns: 1fr;
+    padding: 30px 20px;
   }
 
   .service-card {
-    background: #222;
-    padding: 20px;
-    border-radius: 6px;
-    text-align: center;
+    margin: 10px 0;
   }
 
-  .service-card h3 {
-    margin-top: 10px;
-    color: #fff;
-  }
-
-  .service-card p {
-    color: #bbb;
-    font-size: 0.95em;
-  }
-
-  .portfolio {
-    padding: 60px 40px;
-    background: #111;
-  }
-
-  .portfolio h2 {
-    margin-bottom: 30px;
-    font-size: 2em;
-    border-bottom: 2px solid #fff;
-    display: inline-block;
-    padding-bottom: 5px;
-  }
-
+  /* Portfolio */
   .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr;
+    padding: 30px 20px;
   }
 
   .portfolio-item {
-    background: #222;
-    border-radius: 6px;
-    overflow: hidden;
-    text-align: center;
-  }
-
-  .portfolio-item img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-  }
-
-  .portfolio-item h4 {
     margin: 10px 0;
-    color: #fff;
   }
-
-  footer {
-    text-align: center;
-    font-size: 0.9em;
-    color: #aaa;
-  }
-  .logo {
-    width: 50px;  /* Imposta una larghezza per il logo */
-    height: auto; /* Mantieni le proporzioni */
-  }
-  
-  header div strong {
-    font-size: 30px;  /* Dimensione del testo per le iniziali */
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    margin-left: 10px;
-  }
-  
+}

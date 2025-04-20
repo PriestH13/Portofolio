@@ -1,0 +1,19 @@
+{% load static %}
+<header>
+  <div class="logo-container">
+    <a href="{% url 'home' %}">
+      <img src="{% static 'images/priestH13.ico' %}" alt="Logo" class="logo">
+    </a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <nav class="nav">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'about' %}">About</a>
+    <a href="{% url 'projects' %}">Projects</a>
+    <a href="{% url 'contact' %}">Contact</a>
+  </nav>
+</header>

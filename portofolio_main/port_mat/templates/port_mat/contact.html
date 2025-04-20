@@ -1,0 +1,43 @@
+{% load static %}
+
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+
+  {% include 'port_mat/header.html' %}
+
+  <section class="contact">
+    <h1>Contattami</h1>
+
+    <form action="#" method="post">
+      <div>
+        <label for="name">Nome</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div>
+        <label for="message">Messaggio</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <button type="submit" class="btn">Invia Messaggio</button>
+    </form>
+  </section>
+
+  <footer>
+    © 2025 - Mateo Prifti (PriestH13). Tutti i diritti riservati.
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav').classList.toggle('active');
+    }
+  </script>
+  
+</body>
+</html>

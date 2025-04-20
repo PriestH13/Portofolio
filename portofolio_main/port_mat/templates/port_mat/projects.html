@@ -1,0 +1,26 @@
+{% load static %}
+
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+
+  {% include 'port_mat/header.html' %}  <section class="projects">
+    <h1>I miei Progetti</h1>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        {% comment %} <img src="{% static 'port_mat/images/project1.jpg' %}" alt="Progetto 1"> {% endcomment %}
+        <h4>Progetto 1</h4>
+        <p>Descrizione del progetto 1.</p>
+      </div>
+      <div class="portfolio-item">
+        {% comment %} <img src="{% static 'port_mat/images/project2.jpg' %}" alt="Progetto 2"> {% endcomment %}
+        <h4>Progetto 2</h4>
+        <p>Descrizione del progetto 2.</p>
+      </div>
+      <div class="portfolio-item">
+        {% comment %} <img src="{% static 'port_mat/images/project3.jpg' %}" alt="Progetto 3"> {% endcomment %}
+        <h4>Progetto 3</h4>
+        <p>Descrizione del progetto 3.</p>
+      </div>
+    </div>
+  </section>

@@ -1,34 +1,23 @@
 {% load static %}
+<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio | [Il Tuo Nome]</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Mateo Prifti</title>
   <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
 
-  <header>
-    <div>
-      <a href="{% url 'home' %}">
-        <img src="{% static 'images/logo_priesth13.ico' %}" alt="Logo" class="logo">
-      </a>
-    </div>
-  
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Portfolio</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+
+    {% include 'port_mat/header.html' %}
 
   <section class="intro">
     <img src="{% static 'images/profile_mateo.jpg' %}" alt="Foto Profilo">
     <div class="intro-text">
       <h1>Mateo Prifti</h1>
       <p>Full-Stack Web Developer con esperienza in Python, Django, JavaScript, HTML e CSS. Appassionato di sviluppo web e soluzioni scalabili.</p>
-      <button class="btn">Scopri di più</button>
+      <button class="btn"><a href="{% url 'projects' %}">Scopri di più</a></button>
     </div>
   </section>
 
@@ -66,8 +55,14 @@
   </section>
 
   <footer>
-    © 2025 - Il tuo nome. Tutti i diritti riservati.
+    © 2025 - Mateo Prifti (PriestH13). Tutti i diritti riservati.
   </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav').classList.toggle('active');
+    }
+  </script>
 
 </body>
 </html>
