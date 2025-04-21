@@ -1,27 +1,25 @@
 {% load static %}
 
-  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
 
-  {% include 'port_mat/header.html' %}  <section class="projects">
-    <h1>I miei Progetti</h1>
-    <div class="portfolio-grid">
-      <div class="portfolio-item">
-        {% comment %} <img src="{% static 'port_mat/images/project1.jpg' %}" alt="Progetto 1"> {% endcomment %}
-        <h4>Progetto 1</h4>
-        <p>Descrizione del progetto 1.</p>
-      </div>
-      <div class="portfolio-item">
-        {% comment %} <img src="{% static 'port_mat/images/project2.jpg' %}" alt="Progetto 2"> {% endcomment %}
-        <h4>Progetto 2</h4>
-        <p>Descrizione del progetto 2.</p>
-      </div>
-      <div class="portfolio-item">
-        {% comment %} <img src="{% static 'port_mat/images/project3.jpg' %}" alt="Progetto 3"> {% endcomment %}
-        <h4>Progetto 3</h4>
-        <p>Descrizione del progetto 3.</p>
-      </div>
+{% include 'port_mat/header.html' %}
+
+<section class="projects">
+  <h1>I miei Progetti</h1>
+  <div class="portfolio-grid">
+    {% for project in projects %}
+    <div class="portfolio-item">
+      <img src="{{ project.image.url }}" alt="{{ project.title }}"> <!-- Immagine del progetto -->
+      <h4>{{ project.title }}</h4>
+      <p>{{ project.description }}</p> <!-- Descrizione del progetto -->
+      <p><strong>Tecnologie:</strong> {{ project.technologies }}</p> <!-- Tecnologie utilizzate -->
+      <a href="{{ project.github_link }}" target="_blank">GitHub</a> <!-- Link GitHub -->
+      <a href="{{ project.demo_link }}" target="_blank">Demo</a> <!-- Link Demo -->
     </div>
-  </section>
-  {% include 'port_mat/footer.html' %}
+    {% endfor %}
+  </div>
+</section>
+
+{% include 'port_mat/footer.html' %}

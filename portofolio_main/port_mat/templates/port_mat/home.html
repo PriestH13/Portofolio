@@ -9,7 +9,6 @@
 </head>
 <body>
 
-
     {% include 'port_mat/header.html' %}
 
   <section class="intro">
@@ -39,23 +38,18 @@
   <section class="portfolio">
     <h2>Featured Works</h2>
     <div class="portfolio-grid">
+      {% for project in projects %}
       <div class="portfolio-item">
-        <img src="{% static 'port_mat/images/project1.jpg' %}" alt="Progetto 1">
-        <h4>xxxxxxxxx</h4>
+        <a href="{% url 'projects' %}">  <!-- Link alla pagina projects.html -->
+          <img src="{{ project.image.url }}" alt="{{ project.title }}">
+          <h4>{{ project.title }}</h4>
+        </a>
       </div>
-      <div class="portfolio-item">
-        <img src="{% static 'port_mat/images/project2.jpg' %}" alt="Progetto 2">
-        <h4>xxxxxxxxxxxxx</h4>
-      </div>
-      <div class="portfolio-item">
-        <img src="{% static 'port_mat/images/project3.jpg' %}" alt="Progetto 3">
-        <h4>xxxxxxxxxx</h4>
-      </div>
+      {% endfor %}
     </div>
   </section>
-  {% include 'port_mat/footer.html' %}
-  
 
+  {% include 'port_mat/footer.html' %}
 
   <script>
     function toggleMenu() {
