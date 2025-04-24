@@ -1,42 +1,63 @@
+{% extends 'port_mat/home.html' %}
 {% load static %}
 
-  <link rel="stylesheet" href="{% static 'css/home.css' %}">
-</head>
-<body>
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+{% endblock %}
 
-  {% include 'port_mat/header.html' %}
+{% block content %}
+    {% include 'port_mat/header.html' %}
+    <section class="contact-section">
+        <div class="contact-info">
+            <h2>I miei contatti</h2>
+            <ul class="contact-icons">
+                <li>
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <a href="mailto:mateo.prifti13@gmail.com">mateo.prifti13@gmail.com</a>
+                </li>
+                <li>
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                    <a href="https://www.linkedin.com/in/mateo-prifti/" target="_blank">Mateo Prifti</a>
+                </li>
+                <li>
+                    <ion-icon name="logo-github"></ion-icon>
+                    <a href="https://github.com/PriestH13" target="_blank">Mateo Prifti (PriestH13)</a>
+                </li>
+            </ul>
+        </div>
 
-  <section class="contact">
-    <h1>Contattami</h1>
+        <div class="contact-form-wrapper">
+            <h1>Contattami</h1>
+            {% if message %}
+                <p class="success">{{ message }}</p>
+            {% endif %}
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+            <form action="{% url 'contact' %}" method="post" class="contact-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required placeholder="Il tuo nome">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="tuo@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Messaggio</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Scrivi il tuo messaggio..."></textarea>
+                </div>
+                <button type="submit" class="btn-send">Invia Messaggio</button>
+            </form>
+        </div>
+    </section>
+    {% include 'port_mat/footer.html' %}
+{% endblock %}
 
-    <form action="#" method="post">
-      <div>
-        <label for="name">Nome</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-
-      <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-
-      <div>
-        <label for="message">Messaggio</label>
-        <textarea id="message" name="message" required></textarea>
-      </div>
-
-      <button type="submit" class="btn">Invia Messaggio</button>
-    </form>
-  </section>
-
-  {% include 'port_mat/footer.html' %}
-
-
-  <script>
-    function toggleMenu() {
-      document.querySelector('.nav').classList.toggle('active');
-    }
-  </script>
-  
-</body>
-</html>
+{% block extra_js %}
+    <script src="{% static 'js/home.js' %}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+{% endblock %}
