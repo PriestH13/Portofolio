@@ -20,23 +20,6 @@ Contact Form: Users can directly send messages to the creator.
 Interactive Animations: Adding animations and transitions to make the site dynamic and engaging.
 
 
-Technologies Used:
-
-HTML5: for creating the structure and content of the pages.
-
-CSS3: for styling, customizing layouts, and creating a responsive design.
-
-JavaScript: for handling interactions such as form validation and animations.
-
-Git/GitHub: for version control, making it easy to track changes and collaborate.
-
-Font Awesome: for elegant social and professional icon integration.
-
-Media Queries: to ensure full responsiveness on various devices.
-
-
-
-
 
 Versione Italiana:
 
@@ -60,16 +43,4 @@ Form di contatto: possibilità di inviare un messaggio direttamente al creatore.
 Animazioni interattive: aggiunta di animazioni e transizioni per rendere il sito dinamico e interessante.
 
 
-Tecnologie usate:
-
-HTML5: per la creazione della struttura e del contenuto delle pagine.
-
-CSS3: per lo styling, la personalizzazione dei layout e la creazione di un design responsivo.
-
-JavaScript: per la gestione delle interazioni, come il controllo del modulo di contatto e le animazioni.
-
-Git/GitHub: per il versionamento del codice, facilitando il monitoraggio dei cambiamenti e la collaborazione.
-
-Font Awesome: per l'inclusione di icone social e professionali in modo elegante.
-
-Media Queries: per rendere il sito completamente responsivo su vari dispositivi.
+[![My Skills](https://skillicons.dev/icons?i=js,html,css,python)](https://skillicons.dev)
