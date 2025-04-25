@@ -9,6 +9,11 @@
     {% include 'port_mat/header.html' %}
     <section class="projects">
         <h1>I miei Progetti</h1>
+        <!-- Form di ricerca -->
+        <form method="GET" action="{% url 'projects' %}" class="search-form">
+            <input type="text" name="q" value="{{ query }}" placeholder="Cerca progetti..." aria-label="Cerca progetti">
+            <button type="submit" class="btn btn-primary">Cerca</button>
+        </form>
         <div class="portfolio-grid">
             {% for project in projects %}
             <div class="portfolio-item">
@@ -34,7 +39,12 @@
                     {% endif %}
                 </div>
                 <h4>{{ project.title }}</h4>
-                <p class="project-description">{{ project.description }}</p>
+
+                <!-- Bottone per popup -->
+                <div class="project-description">
+                    <button class="toggle-description-btn" data-description="{{ project.description }}">Description</button>
+                </div>
+
                 <p class="project-technologies"><strong>Tecnologie:</strong> {{ project.technologies }}</p>
                 <div class="project-links">
                     {% if project.github_link %}
@@ -49,8 +59,36 @@
                     {% endif %}
                 </div>
             </div>
+            {% empty %}
+                <p>Nessun progetto trovato.</p>
             {% endfor %}
         </div>
+
+        <!-- Paginazione -->
+        {% if is_paginated %}
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?{% if query %}q={{ query }}&{% endif %}page={{ page_obj.previous_page_number }}" class="btn btn-secondary">Precedente</a>
+            {% endif %}
+            <span>Pagina {{ page_obj.number }} di {{ paginator.num_pages }}</span>
+            {% if page_obj.has_next %}
+                <a href="?{% if query %}q={{ query }}&{% endif %}page={{ page_obj.next_page_number }}" class="btn btn-secondary">Successivo</a>
+            {% endif %}
+        </div>
+        {% endif %}
     </section>
+
+    <!-- Modale popup -->
+    <div id="descriptionModal" class="modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0, 0, 0, 0.5);">
+        <div class="modal-content" style="background-color:rgba(0, 0, 0, 0.9); margin:10% auto; padding:20px; border-radius:10px; width:90%; max-width:600px; position:relative;">
+            <span class="close-modal" style="position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer;">×</span>
+            <p id="modal-description-text" style="white-space: pre-wrap;"></p>
+        </div>
+    </div>
+
     {% include 'port_mat/footer.html' %}
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/home.js' %}"></script>
 {% endblock %}

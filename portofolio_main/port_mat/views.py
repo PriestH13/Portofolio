@@ -4,6 +4,7 @@ from .models import Projects
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
+from django.db.models import Q
 
 class HomeView(ListView):
     model = Projects
@@ -18,8 +19,19 @@ class ProjectsView(ListView):
     model = Projects
     template_name = 'port_mat/projects.html'
     context_object_name = 'projects'
-    queryset = Projects.objects.prefetch_related('images').order_by('-created_at')
+    paginate_by = 6
 
+    def get_queryset(self):
+        queryset = Projects.objects.prefetch_related('images').order_by('-created_at')
+        query = self.request.GET.get('q')
+        if query:
+            queryset = queryset.filter(Q(title__icontains=query) | Q(technologies__icontains=query))
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.request.GET.get('q', '')
+        return context
 class ContactView(TemplateView):
     template_name = 'port_mat/contact.html'
 

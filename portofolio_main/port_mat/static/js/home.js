@@ -57,3 +57,52 @@ function toggleMenu() {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("descriptionModal");
+    const modalText = document.getElementById("modal-description-text");
+    const closeModal = document.querySelector(".close-modal");
+
+    document.querySelectorAll(".toggle-description-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+            const description = this.getAttribute("data-description");
+            modalText.textContent = description;
+            modal.style.display = "block";
+        });
+    });
+
+    closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    window.addEventListener("click", function (e) {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
+
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.toggle-description-btn');
+            const modal = document.getElementById('descriptionModal');
+            const modalText = document.getElementById('modal-description-text');
+            const closeModal = document.querySelector('.close-modal');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    modalText.textContent = this.getAttribute('data-description');
+                    modal.style.display = 'block';
+                });
+            });
+
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });

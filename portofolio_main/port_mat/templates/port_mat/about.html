@@ -10,10 +10,16 @@
     {% include 'port_mat/header.html' %}
     <section class="about">
         <h1>Chi sono</h1>
-        <p>Mi chiamo Mateo Prifti, un Full-Stack Web Developer con esperienza in Python, Django, JavaScript, HTML e CSS...</p>
+        <div class="about-container">
+            <img src="{% static 'images/mateo.jpg' %}" alt="Foto di Mateo Prifti" class="profile-photo">
+            <p class="about-text">
+                Mi chiamo Mateo Prifti, un Full-Stack Web Developer con esperienza in Python, Django, JavaScript, HTML e CSS...
+            </p>
+        </div>
     </section>
     {% include 'port_mat/footer.html' %}
 {% endblock %}
+
 
 {% block extra_js %}
     <script src="{% static 'js/home.js' %}"></script>

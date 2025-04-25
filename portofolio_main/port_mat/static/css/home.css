@@ -1,9 +1,21 @@
+/* ========== VARIABILI CSS ========== */
+:root {
+  --primary-bg: #181818;
+  --secondary-bg: #111;
+  --card-bg: #222;
+  --text-color: #fff;
+  --text-secondary: #ccc;
+  --border-radius: 12px;
+  --transition: 0.3s ease;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
 /* ========== BASE ========== */
 body {
   margin: 0;
   font-family: 'Merriweather', serif;
-  background: #111;
-  color: #fff;
+  background: var(--secondary-bg);
+  color: var(--text-color);
   line-height: 1.6;
 }
 
@@ -11,6 +23,7 @@ body {
   width: 50px;
   height: auto;
 }
+
 /* ========== HEADER & NAV ========== */
 header, footer {
   background-color: #000;
@@ -22,29 +35,42 @@ header, footer {
 }
 
 header nav a {
-  color: #fff;
+  color: var(--text-color);
   text-decoration: none;
   margin: 5px 15px;
-  font-size: 1.2em; /* Font più piccolo, ma ancora visibile */
-  font-family: 'Playfair Display', serif; /* Font elegante */
-  font-weight: 500; /* Un po' più leggero per bilanciare l'estetica */
+  font-size: 1.2em;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 1px; /* Distanza tra le lettere mantenuta, ma ridotta */
-  transition: all 0.3s ease-in-out;
+  letter-spacing: 1px;
+  transition: all var(--transition);
   position: relative;
 }
 
 header nav a:hover {
-  color: #f1f1f1; /* Colore più chiaro al passaggio del mouse */
-  border-bottom: 3px solid #fff; /* Sottolineatura bianca */
-  padding-bottom: 5px; /* Aggiunto spazio sotto il link */
+  color: #f1f1f1;
+  border-bottom: 3px solid var(--text-color);
+  padding-bottom: 5px;
 }
 
 header div strong {
   font-size: 30px;
   font-family: 'Arial', sans-serif;
-  color: #fff;
+  color: var(--text-color);
   margin-left: 10px;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 30px;
+  height: 4px;
+  background-color: var(--text-color);
+  margin: 6px 0;
+  transition: all var(--transition);
 }
 
 /* ========== INTRO ========== */
@@ -54,7 +80,7 @@ header div strong {
   padding: 60px 40px;
   align-items: center;
   justify-content: center;
-  background-color: #181818;
+  background-color: var(--primary-bg);
   text-align: center;
 }
 
@@ -62,11 +88,10 @@ header div strong {
   width: 600px;
   height: 600px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   margin-bottom: 20px;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition);
 }
-
 
 .intro-text {
   max-width: 600px;
@@ -76,63 +101,96 @@ header div strong {
 .intro-text h1 {
   font-size: 36px;
   margin-bottom: 15px;
-  color: #fff;
+  color: var(--text-color);
 }
 
 .intro-text p {
   font-size: 18px;
-  color: #ccc;
+  color: var(--text-secondary);
   margin-bottom: 20px;
 }
 
-.intro-text .btn-primary {
-  background: #fff;
-  color: #111;
-  padding: 12px 25px;
-  border-radius: 8px;
+/* ========== BUTTONS ========== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  font-family: 'Merriweather', serif;
+  font-size: 14px;
   text-decoration: none;
-  transition: background 0.3s ease, transform 0.2s ease;
+  border-radius: 8px;
+  transition: background var(--transition), transform 0.2s ease;
+  width: auto;
+  min-width: 120px;
+  text-align: center;
 }
 
-.intro-text .btn-primary:hover {
+.btn ion-icon {
+  font-size: 20px;
+  margin-right: 8px;
+  transition: transform 0.2s ease;
+}
+
+.btn:hover ion-icon {
+  transform: scale(1.1);
+}
+
+.btn-primary {
+  background: var(--text-color);
+  color: #111;
+}
+
+.btn-primary:hover {
   background: #e0e0e0;
   transform: scale(1.05);
 }
-/* ========== BUTTON ========== */
-.btn {
-  padding: 10px 25px;
-  background: #fff;
-  color: #000;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background 0.3s;
+
+.btn-secondary {
+  background: #333;
+  color: var(--text-color);
 }
 
-.btn:hover {
-  background: #ccc;
+.btn-secondary:hover {
+  background: #555;
+  transform: scale(1.05);
+}
+
+.btn-send {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #1da1f2, #0077b5);
+  color: var(--text-color);
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.btn-send:hover {
+  background: linear-gradient(90deg, #0077b5, #1da1f2);
 }
 
 /* ========== SERVICES ========== */
 .services {
   padding: 60px 40px;
-  background-color: #111;
+  background-color: var(--secondary-bg);
   text-align: center;
 }
 
 .services h2 {
   font-size: 32px;
   margin-bottom: 40px;
-  color: #fff;
-  position: relative;
+  color: var(--text-color);
+  position: relativ;
 }
 
 .services h2::after {
   content: '';
   width: 80px;
   height: 4px;
-  background-color: #fff;
+  background-color: var(--text-color);
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -148,43 +206,50 @@ header div strong {
 }
 
 .service-card {
-  background: #222;
+  background: var(--card-bg);
   padding: 25px;
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: var(--border-radius);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .service-card h3 {
   font-size: 20px;
   margin: 15px 0 10px;
-  color: #fff;
+  color: var(--text-color);
 }
 
 .service-card p {
   font-size: 16px;
-  color: #ccc;
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
-/* ========== PORTFOLIO ========== */
-.portfolio {
+/* ========== PROJECTS ========== */
+.projects {
   padding: 60px 40px;
-  background: #181818;
+  background: var(--primary-bg);
   text-align: center;
 }
 
-.portfolio h2 {
+.projects h1, .projects h2 {
   font-size: 32px;
-  margin-bottom: 40px;
-  color: #fff;
+  margin: 0 0 40px 0;
+  padding: 0;
+  font-family: 'Merriweather', serif;
+  color: var(--text-color);
   position: relative;
+  display: inline-block;
+  width: auto;
+  left: 0;
+  transform: none;
+  text-align: center;
 }
 
-.portfolio h2::after {
+.projects h1::after, .projects h2::after {
   content: '';
   width: 80px;
   height: 4px;
-  background-color: #fff;
+  background-color: var(--text-color);
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -200,10 +265,10 @@ header div strong {
 }
 
 .portfolio-item {
-  background: #222;
-  border-radius: 12px;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform varHijack, box-shadow var(--transition);
 }
 
 .portfolio-item:hover {
@@ -215,8 +280,8 @@ header div strong {
   width: 100%;
   height: 300px;
   object-fit: cover;
-  border-radius: 12px 12px 0 0;
-  transition: transform 0.3s ease;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  transition: transform var(--transition);
 }
 
 .project-image:hover {
@@ -226,28 +291,33 @@ header div strong {
 .portfolio-item h4 {
   font-size: 20px;
   margin: 15px 20px 10px;
-  color: #fff;
+  color: var(--text-color);
+  font-family: 'Merriweather', serif;
 }
 
-.portfolio-item .btn-secondary {
-  display: inline-block;
+.project-description {
+  font-size: 16px;
+  color: #ff0000;
+  margin: 0 20px 15px;
+  line-height: 1.6;
+}
+
+.project-technologies {
+  font-size: 14px;
+  color: #bbb;
   margin: 0 20px 20px;
-  background: #333;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.portfolio-item .btn-secondary:hover {
-  background: #555;
-  transform: scale(1.05);
+.project-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 20px 20px;
 }
 
-/* Stili per LightGallery */
+/* ========== LIGHTGALLERY ========== */
 .lg-custom .lg-img-wrap {
-  border-radius: 12px;
+  border-radius: var(--border-radius);
 }
 
 .lg-custom .lg-toolbar {
@@ -255,11 +325,409 @@ header div strong {
 }
 
 .lg-custom .lg-counter {
-  color: #fff;
+  color: var(--text-color);
 }
 
-/* Responsive */
+.lightgallery {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.lightgallery a {
+  display: block;
+}
+
+.lightgallery img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform var(--transition);
+}
+
+.lightgallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Stili per la ricerca */
+.search-form {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-form input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid var(--text-color);
+  border-radius: var(--border-radius);
+  background: var(--card-bg);
+  color: var(--text-color);
+  width: 300px;
+  max-width: 100%;
+}
+
+.search-form input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.search-form button {
+  padding: 10px 20px;
+}
+
+/* Stili per la paginazione */
+.pagination {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 16px;
+}
+
+.pagination a {
+  padding: 10px 20px;
+}
+
+.pagination span {
+  color: var(--text-color);
+}
+
+/* ========== CONTACT ========== */
+.contact-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 60px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #121212;
+  border-radius: 20px;
+}
+
+.contact-info {
+  flex: 1 1 40%;
+  background-color: #1e1e1e;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  color: #f0f0f0;
+}
+
+.contact-info h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-family: 'Merriweather', serif;
+}
+
+.contact-icons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-icons li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+  font-size: 17px;
+  color: var(--text-secondary);
+}
+
+.contact-icons ion-icon {
+  font-size: 22px;
+  margin-right: 12px;
+  color: #888;
+  transition: transform var(--transition), color var(--transition);
+}
+
+.contact-icons a {
+  color: #ddd;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.contact-icons a:hover {
+  color: #1da1f2;
+  text-decoration: underline;
+}
+
+.contact-icons ion-icon:hover {
+  transform: scale(1.2);
+  color: var(--text-color);
+}
+
+.contact-form-wrapper {
+  flex: 1 1 50%;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.contact-form-wrapper h1 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-family: 'Merriweather', serif;
+  text-align: left;
+}
+
+.contact-form .form-group {
+  margin-bottom: 20px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: var(--text-color);
+  font-size: 16px;
+  outline: none;
+  transition: border var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #1da1f2;
+}
+
+/* ========== ABOUT ========== */
+.about {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  padding: 60px 40px;
+  max-width: 1000px;
+  margin: 60px auto;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  font-family: 'Merriweather', serif;
+  line-height: 1.6;
+}
+
+.about h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #1da1f2;
+}
+
+.about p {
+  font-size: 18px;
+  color: var(--text-secondary);
+  text-align: justify;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.profile-photo {
+  width: 200px;
+  height: auto;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-bottom: 1rem;
+}
+
+.about-text {
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-contact ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-contact a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 24px;
+  transition: color var(--transition);
+}
+
+.footer-contact a:hover {
+  color: #e0e0e0;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.2s ease;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+.footer-contact a ion-icon.icon[name="logo-telegram"] {
+  font-size: 30px;
+  color: var(--text-color);
+  fill: var(--text-color);
+  stroke: var(--text-color);
+  width: 30px;
+  height: 30px;
+  transition: transform 0.2s ease, color var(--transition), fill var(--transition);
+}
+
+.footer-contact a ion-icon.icon[name="logo-telegram"]:hover {
+  color: #e0e0e0;
+  fill: #e0e0e0;
+  stroke: #e0e0e0;
+  transform: scale(1.2);
+}
+
+footer p {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* ========== MODAL & TOGGLE ========== */
+.toggle-description-btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--text-color);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: background-color var(--transition);
+}
+
+.toggle-description-btn:hover {
+  background-color: #1da1f2;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.close-modal {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 24px;
+  color: #888;
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  color: var(--text-color);
+}
+
+.success {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .contact-section {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .contact-info,
+  .contact-form-wrapper {
+    flex: 1 1 100%;
+  }
+}
+
 @media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav.active {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .nav a {
+    display: block;
+    padding: 10px;
+    margin: 0;
+    border-top: 1px solid #444;
+  }
+
   .intro {
     flex-direction: column;
     padding: 40px 20px;
@@ -284,125 +752,23 @@ header div strong {
     font-size: 16px;
   }
 
-  .services {
+  .services, .projects, .about {
     padding: 40px 20px;
   }
 
-  .services h2 {
+  .services h2, .projects h1, .about h1 {
     font-size: 28px;
   }
 
-  .services-grid {
+  .services-grid, .portfolio-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  .portfolio {
-    padding: 40px 20px;
-  }
-
-  .portfolio h2 {
-    font-size: 28px;
-  }
-
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .project-image {
+  .project-image, .lightgallery img {
     height: 250px;
   }
-}
 
-@media (max-width: 480px) {
-  .intro-text h1 {
-    font-size: 24px;
-  }
-
-  .intro-text p {
-    font-size: 14px;
-  }
-
-  .services h2, .portfolio h2 {
-    font-size: 24px;
-  }
-
-  .service-card h3, .portfolio-item h4 {
-    font-size: 18px;
-  }
-
-  .btn-primary, .btn-secondary {
-    padding: 8px 15px;
-    font-size: 14px;
-  }
-}
-
-/* ========== FOOTER ========== */
-/* Stile per il footer */
-footer {
-  background-color: #181818;
-  color: white;
-  padding: 20px 0;
-  text-align: center;
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-contact ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.footer-contact a {
-  text-decoration: none;
-  color: white;
-  font-size: 24px;
-  transition: color 0.3s ease;
-}
-
-.footer-contact a:hover {
-  color: #e0e0e0; /* Sostituisci #f39c12 con #e0e0e0 per coerenza */
-}
-
-.icon {
-  width: 30px;
-  height: 30px;
-  transition: transform 0.2s ease;
-}
-
-.icon:hover {
-  transform: scale(1.2); /* Effetto di ingrandimento al passaggio del mouse */
-}
-
-footer p {
-  margin-top: 20px;
-  font-size: 14px;
-}
-.footer-contact a ion-icon.icon[name="logo-telegram"] {
-  font-size: 30px;
-  color: #ffffff !important;
-  fill: #ffffff !important;
-  stroke: #ffffff !important;
-  width: 30px;
-  height: 30px;
-  transition: transform 0.2s ease, color 0.3s ease, fill 0.3s ease;
-}
-
-.footer-contact a ion-icon.icon[name="logo-telegram"]:hover {
-  color: #e0e0e0 !important;
-  fill: #e0e0e0 !important;
-  stroke: #e0e0e0 !important;
-  transform: scale(1.2);
-}
-
-@media (max-width: 768px) {
   .footer-contact a ion-icon.icon[name="logo-telegram"] {
     font-size: 24px;
     width: 24px;
@@ -410,488 +776,16 @@ footer p {
   }
 }
 
-
-
-/* ========== MOBILE-FIRST DESIGN ========== */
-@media screen and (max-width: 768px) {
-  /* Header */
-  header {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  header nav {
-    display: none;
-  }
-
-  /* Hamburger menu */
-  .hamburger {
-    display: block;
-    cursor: pointer;
-  }
-
-  .hamburger div {
-    width: 30px;
-    height: 4px;
-    background-color: #fff;
-    margin: 6px 0;
-    transition: all 0.3s ease-in-out;
-  }
-
-  /* Mobile nav menu */
-  .nav.active {
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  .nav a {
-    display: block;
-    padding: 10px;
-    margin: 0;
-    border-top: 1px solid #444;
-  }
-
-  /* Intro */
-  .intro {
-    flex-direction: column;
-    padding: 40px 20px;
-  }
-
-  .intro img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-  }
-
-  .intro-text {
-    margin-left: 0;
-    max-width: 100%;
-  }
-
-  .intro-text h1 {
-    font-size: 2em;
-  }
-
-  .intro-text p {
-    font-size: 1em;
-  }
-
-  /* Services */
-  .services {
-    grid-template-columns: 1fr;
-    padding: 30px 20px;
-  }
-
-  .service-card {
-    margin: 10px 0;
-  }
-
-  /* Portfolio */
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-    padding: 30px 20px;
-  }
-
-  .portfolio-item {
-    margin: 10px 0;
-  }
-}
-
-/* ========== contaact========== */
-/* Layout generale */
-.contact-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-  padding: 60px 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  background-color: #121212;
-  border-radius: 20px;
-}
-
-/* Colonna sinistra - Contatti */
-.contact-info {
-  flex: 1 1 40%;
-  background-color: #1e1e1e;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  color: #f0f0f0;
-}
-
-.contact-info h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  font-family: 'Merriweather', serif;
-}
-
-.contact-icons {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.contact-icons li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 14px;
-  font-size: 17px;
-  color: #ccc;
-}
-
-.contact-icons ion-icon {
-  font-size: 22px;
-  margin-right: 12px;
-  color: #888;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.contact-icons a {
-  color: #ddd;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.contact-icons a:hover {
-  color: #1da1f2;
-  text-decoration: underline;
-}
-
-.contact-icons ion-icon:hover {
-  transform: scale(1.2);
-  color: #fff;
-}
-
-/* Colonna destra - Form */
-.contact-form-wrapper {
-  flex: 1 1 50%;
-  background-color: #1e1e1e;
-  color: #f0f0f0;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.contact-form-wrapper h1 {
-  font-size: 32px;
-  margin-bottom: 30px;
-  font-family: 'Merriweather', serif;
-  text-align: left;
-}
-
-.contact-form .form-group {
-  margin-bottom: 20px;
-}
-
-.contact-form label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 500;
-  color: #ccc;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 12px;
-  background-color: #2a2a2a;
-  border: 1px solid #444;
-  border-radius: 8px;
-  color: #fff;
-  font-size: 16px;
-  outline: none;
-  transition: border 0.3s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: #1da1f2;
-}
-
-.btn-send {
-  display: block;
-  width: 100%;
-  padding: 14px;
-  background: linear-gradient(90deg, #1da1f2, #0077b5);
-  color: #fff;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.btn-send:hover {
-  background: linear-gradient(90deg, #0077b5, #1da1f2);
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .contact-section {
-    flex-direction: column;
-    padding: 30px 20px;
-  }
-
-  .contact-info,
-  .contact-form-wrapper {
-    flex: 1 1 100%;
-  }
-}
-
-/* ========== About========== */
-.about {
-  background-color: #1e1e1e;
-  color: #f0f0f0;
-  padding: 60px 40px;
-  max-width: 1000px;
-  margin: 60px auto;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  font-family: 'Merriweather', serif;
-  line-height: 1.6;
-}
-
-.about h1 {
-  font-size: 32px;
-  margin-bottom: 20px;
-  text-align: center;
-  font-weight: bold;
-  color: #1da1f2;
-}
-
-.about p {
-  font-size: 18px;
-  color: #ccc;
-  text-align: justify;
-}
-.portfolio-item {
-  display: block;
-  margin-bottom: 20px;
-}
-
-.portfolio-item img {
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.lightgallery {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-}
-
-.lightgallery a {
-  display: block;
-}
-
-.lightgallery img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.lightgallery img:hover {
-  transform: scale(1.05);
-}
-.success {
-  color: green;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.error {
-  color: red;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-/* ========== PROJECTS ========== */
-.projects {
-  padding: 60px 40px;
-  background-color: #181818;
-  text-align: center;
-}
-
-.projects h1 {
-  font-size: 32px;
-  margin-bottom: 40px;
-  font-family: 'Merriweather', serif;
-  color: #fff;
-  position: relative;
-}
-
-.projects h1::after {
-  content: '';
-  width: 80px;
-  height: 4px;
-  background-color: #fff;
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.portfolio-item {
-  background: #222;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.portfolio-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
-}
-
-.project-image {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 12px 12px 0 0;
-  transition: transform 0.3s ease;
-}
-
-.project-image:hover {
-  transform: scale(1.05);
-}
-
-.portfolio-item h4 {
-  font-size: 20px;
-  margin: 15px 20px 10px;
-  color: #fff;
-  font-family: 'Merriweather', serif;
-}
-
-.project-description {
-  font-size: 16px;
-  color: #ccc;
-  margin: 0 20px 15px;
-  line-height: 1.6;
-}
-
-.project-technologies {
-  font-size: 14px;
-  color: #bbb;
-  margin: 0 20px 20px;
-}
-
-.project-links {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: 0 20px 20px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 10px 20px;
-  font-family: 'Merriweather', serif;
-  font-size: 16px;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.btn ion-icon {
-  font-size: 20px;
-  margin-right: 8px;
-  transition: transform 0.2s ease;
-}
-
-.btn:hover ion-icon {
-  transform: scale(1.1);
-}
-
-.btn-primary {
-  background: #fff;
-  color: #111;
-}
-
-.btn-primary:hover {
-  background: #e0e0e0;
-  transform: scale(1.05);
-}
-
-.btn-secondary {
-  background: #333;
-  color: #fff;
-}
-
-.btn-secondary:hover {
-  background: #555;
-  transform: scale(1.05);
-}
-
-/* Stili per LightGallery */
-.lg-custom .lg-img-wrap {
-  border-radius: 12px;
-}
-
-.lg-custom .lg-toolbar {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.lg-custom .lg-counter {
-  color: #fff;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .projects {
-    padding: 40px 20px;
-  }
-
-  .projects h1 {
-    font-size: 28px;
-  }
-
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .project-image {
-    height: 250px;
-  }
-
-  .btn {
-    padding: 8px 15px;
-    font-size: 14px;
-  }
-
-  .btn ion-icon {
-    font-size: 18px;
-    margin-right: 6px;
-  }
-}
-
 @media (max-width: 480px) {
-  .projects h1 {
+  .intro-text h1, .contact-form-wrapper h1, .about h1, .projects h1, .services h2 {
     font-size: 24px;
   }
 
-  .portfolio-item h4 {
+  .intro-text p {
+    font-size: 14px;
+  }
+
+  .service-card h3, .portfolio-item h4 {
     font-size: 18px;
   }
 
@@ -902,52 +796,14 @@ footer p {
   .project-technologies {
     font-size: 13px;
   }
-}
-
-/* Stili per LightGallery */
-.lg-custom .lg-img-wrap {
-  border-radius: 12px;
-}
-
-.lg-custom .lg-toolbar {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.lg-custom .lg-counter {
-  color: #fff;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .projects {
-    padding: 40px 20px;
-  }
-
-  .projects h1 {
-    font-size: 28px;
-  }
-
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .project-image {
-    height: 250px;
-  }
-}
-
-@media (max-width: 480px) {
-  .projects h1 {
-    font-size: 24px;
-  }
-
-  .portfolio-item h4 {
-    font-size: 18px;
-  }
 
   .btn {
     padding: 8px 15px;
     font-size: 14px;
+  }
+
+  .btn ion-icon {
+    font-size: 18px;
+    margin-right: 6px;
   }
 }
