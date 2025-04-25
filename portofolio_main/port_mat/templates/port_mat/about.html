@@ -1,23 +1,26 @@
+{% extends 'port_mat/home.html' %}
 {% load static %}
 
-  <link rel="stylesheet" href="{% static 'css/home.css' %}">
-</head>
-<body>
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+{% endblock %}
 
-  {% include 'port_mat/header.html' %}
+{% block content %}
+    {% include 'port_mat/header.html' %}
+    <section class="about">
+        <h1>Chi sono</h1>
+        <div class="about-container">
+            <img src="{% static 'images/mateo.jpg' %}" alt="Foto di Mateo Prifti" class="profile-photo">
+            <p class="about-text">
+                Mi chiamo Mateo Prifti, un Full-Stack Web Developer con esperienza in Python, Django, JavaScript, HTML e CSS...
+            </p>
+        </div>
+    </section>
+    {% include 'port_mat/footer.html' %}
+{% endblock %}
 
-  <section class="about">
-    <h1>Chi sono</h1>
-    <p>Mi chiamo Mateo Prifti, un Full-Stack Web Developer con esperienza in Python, Django, JavaScript, HTML e CSS...</p>
-  </section>
 
-  {% include 'port_mat/footer.html' %}
-
-  <script>
-    function toggleMenu() {
-      document.querySelector('.nav').classList.toggle('active');
-    }
-  </script>
-
-</body>
-</html>
+{% block extra_js %}
+    <script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

@@ -1,27 +1,94 @@
+{% extends 'port_mat/home.html' %}
 {% load static %}
 
-  <link rel="stylesheet" href="{% static 'css/home.css' %}">
-</head>
-<body>
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 
-  {% include 'port_mat/header.html' %}  <section class="projects">
-    <h1>I miei Progetti</h1>
-    <div class="portfolio-grid">
-      <div class="portfolio-item">
-        {% comment %} <img src="{% static 'port_mat/images/project1.jpg' %}" alt="Progetto 1"> {% endcomment %}
-        <h4>Progetto 1</h4>
-        <p>Descrizione del progetto 1.</p>
-      </div>
-      <div class="portfolio-item">
-        {% comment %} <img src="{% static 'port_mat/images/project2.jpg' %}" alt="Progetto 2"> {% endcomment %}
-        <h4>Progetto 2</h4>
-        <p>Descrizione del progetto 2.</p>
-      </div>
-      <div class="portfolio-item">
-        {% comment %} <img src="{% static 'port_mat/images/project3.jpg' %}" alt="Progetto 3"> {% endcomment %}
-        <h4>Progetto 3</h4>
-        <p>Descrizione del progetto 3.</p>
-      </div>
+{% block content %}
+    {% include 'port_mat/header.html' %}
+    <section class="projects">
+        <h1>I miei Progetti</h1>
+        <!-- Form di ricerca -->
+        <form method="GET" action="{% url 'projects' %}" class="search-form">
+            <input type="text" name="q" value="{{ query }}" placeholder="Cerca progetti..." aria-label="Cerca progetti">
+            <button type="submit" class="btn btn-primary">Cerca</button>
+        </form>
+        <div class="portfolio-grid">
+            {% for project in projects %}
+            <div class="portfolio-item">
+                <div id="gallery-{{ project.id }}" class="lightgallery">
+                    {% if project.images.all %}
+                        <!-- Prima immagine visibile -->
+                        <a href="{{ project.images.first.image.url }}" data-sub-html="{{ project.images.first.description }}" data-src="{{ project.images.first.image.url }}">
+                            <img src="{{ project.images.first.image.url }}" alt="{{ project.title }}" class="project-image">
+                        </a>
+                        <!-- Altre immagini nascoste per la galleria -->
+                        {% for img in project.images.all %}
+                            {% if not forloop.first %}
+                            <a href="{{ img.image.url }}" data-sub-html="{{ img.description }}" data-src="{{ img.image.url }}">
+                                <img src="{{ img.image.url }}" style="display:none;" alt="{{ project.title }}">
+                            </a>
+                            {% endif %}
+                        {% endfor %}
+                    {% elif project.image %}
+                        <!-- Singola immagine -->
+                        <a href="{{ project.image.url }}" data-src="{{ project.image.url }}">
+                            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image">
+                        </a>
+                    {% endif %}
+                </div>
+                <h4>{{ project.title }}</h4>
+
+                <!-- Bottone per popup -->
+                <div class="project-description">
+                    <button class="toggle-description-btn" data-description="{{ project.description }}">Description</button>
+                </div>
+
+                <p class="project-technologies"><strong>Tecnologie:</strong> {{ project.technologies }}</p>
+                <div class="project-links">
+                    {% if project.github_link %}
+                    <a href="{{ project.github_link }}" target="_blank" class="btn btn-primary" aria-label="Vedi il codice su GitHub">
+                        <ion-icon name="logo-github" aria-hidden="true"></ion-icon> GitHub
+                    </a>
+                    {% endif %}
+                    {% if project.demo_link %}
+                    <a href="{{ project.demo_link }}" target="_blank" class="btn btn-secondary" aria-label="Vedi la demo del progetto">
+                        <ion-icon name="play-circle-outline" aria-hidden="true"></ion-icon> Demo
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            {% empty %}
+                <p>Nessun progetto trovato.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Paginazione -->
+        {% if is_paginated %}
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?{% if query %}q={{ query }}&{% endif %}page={{ page_obj.previous_page_number }}" class="btn btn-secondary">Precedente</a>
+            {% endif %}
+            <span>Pagina {{ page_obj.number }} di {{ paginator.num_pages }}</span>
+            {% if page_obj.has_next %}
+                <a href="?{% if query %}q={{ query }}&{% endif %}page={{ page_obj.next_page_number }}" class="btn btn-secondary">Successivo</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </section>
+
+    <!-- Modale popup -->
+    <div id="descriptionModal" class="modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0, 0, 0, 0.5);">
+        <div class="modal-content" style="background-color:rgba(0, 0, 0, 0.9); margin:10% auto; padding:20px; border-radius:10px; width:90%; max-width:600px; position:relative;">
+            <span class="close-modal" style="position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer;">×</span>
+            <p id="modal-description-text" style="white-space: pre-wrap;"></p>
+        </div>
     </div>
-  </section>
-  {% include 'port_mat/footer.html' %}
+
+    {% include 'port_mat/footer.html' %}
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/home.js' %}"></script>
+{% endblock %}
