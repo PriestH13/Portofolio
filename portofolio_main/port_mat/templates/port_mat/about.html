@@ -11,15 +11,21 @@
     <section class="about">
         <h1>Chi sono</h1>
         <div class="about-container">
-            <img src="{% static 'images/mateo.jpg' %}" alt="Foto di Mateo Prifti" class="profile-photo">
-            <p class="about-text">
-                Mi chiamo Mateo Prifti, un Full-Stack Web Developer con esperienza in Python, Django, JavaScript, HTML e CSS...
-            </p>
+            {% if about %}
+                {% if about.profile_image %}
+                    <img src="{{ about.profile_image.url }}" alt="Foto di Mateo Prifti" class="profile-photo">
+                {% else %}
+                    <img src="{% static 'images/mateo.jpg' %}" alt="Foto di Mateo Prifti" class="profile-photo">
+                {% endif %}
+                <p class="about-text">{{ about.bio }}</p>
+            {% else %}
+                <img src="{% static 'images/mateo.jpg' %}" alt="Foto di Mateo Prifti" class="profile-photo">
+                <p class="about-text">Nessuna descrizione disponibile. Aggiungi una sezione "About" nell'admin.</p>
+            {% endif %}
         </div>
     </section>
     {% include 'port_mat/footer.html' %}
 {% endblock %}
-
 
 {% block extra_js %}
     <script src="{% static 'js/home.js' %}"></script>

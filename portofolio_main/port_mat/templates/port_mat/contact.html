@@ -12,18 +12,37 @@
         <div class="contact-info">
             <h2>I miei contatti</h2>
             <ul class="contact-icons">
-                <li>
-                    <ion-icon name="mail-outline"></ion-icon>
-                    <a href="mailto:mateo.prifti13@gmail.com">mateo.prifti13@gmail.com</a>
-                </li>
-                <li>
-                    <ion-icon name="logo-linkedin"></ion-icon>
-                    <a href="https://www.linkedin.com/in/mateo-prifti/" target="_blank">Mateo Prifti</a>
-                </li>
-                <li>
-                    <ion-icon name="logo-github"></ion-icon>
-                    <a href="https://github.com/PriestH13" target="_blank">Mateo Prifti (PriestH13)</a>
-                </li>
+                {% if contact_info %}
+                    <li>
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <a href="mailto:{{ contact_info.email }}">{{ contact_info.email }}</a>
+                    </li>
+                    {% if contact_info.linkedin_url %}
+                        <li>
+                            <ion-icon name="logo-linkedin"></ion-icon>
+                            <a href="{{ contact_info.linkedin_url }}" target="_blank">{{ contact_info.linkedin_name|default:"LinkedIn Profile" }}</a>
+                        </li>
+                    {% endif %}
+                    {% if contact_info.github_url %}
+                        <li>
+                            <ion-icon name="logo-github"></ion-icon>
+                            <a href="{{ contact_info.github_url }}" target="_blank">{{ contact_info.github_name|default:"GitHub Profile" }}</a>
+                        </li>
+                    {% endif %}
+                {% else %}
+                    <li>
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <a href="mailto:mateo.prifti13@gmail.com">mateo.prifti13@gmail.com</a>
+                    </li>
+                    <li>
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                        <a href="https://www.linkedin.com/in/mateo-prifti/" target="_blank">Mateo Prifti</a>
+                    </li>
+                    <li>
+                        <ion-icon name="logo-github"></ion-icon>
+                        <a href="https://github.com/PriestH13" target="_blank">Mateo Prifti (PriestH13)</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
 
