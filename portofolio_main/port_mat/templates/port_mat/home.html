@@ -34,18 +34,14 @@
         <section class="services">
             <h2>Servizi</h2>
             <div class="services-grid">
+                {% for service in services %}
                 <div class="service-card">
-                    <h3>Sviluppo Web</h3>
-                    <p>Realizzazione di siti web responsivi con Django, HTML, CSS, JavaScript.</p>
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.description }}</p>
                 </div>
-                <div class="service-card">
-                    <h3>Backend Scalabile</h3>
-                    <p>Sviluppo di backend robusti e scalabili con Python e Django.</p>
-                </div>
-                <div class="service-card">
-                    <h3>UI/UX Design</h3>
-                    <p>Creazione di interfacce utente intuitive e design accattivanti.</p>
-                </div>
+                {% empty %}
+                <p>Nessun servizio disponibile.</p>
+                {% endfor %}
             </div>
         </section>
         <section class="portfolio">
