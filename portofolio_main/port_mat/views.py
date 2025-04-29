@@ -5,6 +5,8 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
 from django.db.models import Q
+from django.core.mail import EmailMessage
+
 
 class HomeView(ListView):
     model = Projects
@@ -55,28 +57,33 @@ class ContactView(TemplateView):
         email = request.POST.get('email')
         message = request.POST.get('message')
 
+        context = self.get_context_data()
+
         if not all([name, email, message]):
-            return render(request, self.template_name, {
-                'error': 'Tutti i campi sono obbligatori.',
-                'contact_info': ContactInfo.objects.first()
-            })
+            context['error'] = 'Tutti i campi sono obbligatori.'
+            return render(request, self.template_name, context)
+
+        if "@" not in email or "." not in email:
+            context['error'] = 'Inserisci un indirizzo email valido.'
+            return render(request, self.template_name, context)
+
         try:
-            send_mail(
-                subject=f'Messaggio da {name}',
-                message=message,
-                from_email=email,
-                recipient_list=[settings.EMAIL_HOST_USER],
-                fail_silently=False,
+            email_message = EmailMessage(
+                subject=f'Nuovo messaggio da {name}',
+                body=f"Messaggio:\n\n{message}\n\nContatto email: {email}",
+                from_email=settings.EMAIL_HOST_USER,
+                to=[settings.EMAIL_HOST_USER],
+                reply_to=[email],
             )
-            return render(request, self.template_name, {
-                'message': 'Messaggio inviato con successo!',
-                'contact_info': ContactInfo.objects.first()
-            })
+            email_message.send(fail_silently=False)
+
+            context['success'] = 'Messaggio inviato con successo!'
+            return render(request, self.template_name, context)
+
         except Exception as e:
-            return render(request, self.template_name, {
-                'error': f'Errore nell\'invio del messaggio: {str(e)}',
-                'contact_info': ContactInfo.objects.first()
-            })
+            context['error'] = f'Errore nell\'invio del messaggio: {str(e)}'
+            return render(request, self.template_name, context)
+        
 class ServicesView(ListView):
     model = Service
     template_name = 'port_mat/services.html'
