@@ -1,6 +1,6 @@
 # Personal Portfolio - PriestH13
 
-Welcome to the personal portfolio of PriestH13! This portfolio is a digital showcase of my skills, experiences, and the various projects I’ve worked on. It is designed to present a clean, modern, and responsive design that reflects my commitment to creating functional and aesthetically pleasing web applications. The primary objective of this project is to provide a professional online presence and highlight my technical capabilities.
+Welcome to the personal portfolio of Mateo Prifti (PriestH13)! This portfolio is a digital showcase of my skills, experiences, and the various projects I’ve worked on. It is designed to present a clean, modern, and responsive design that reflects my commitment to creating functional and aesthetically pleasing web applications. The primary objective of this project is to provide a professional online presence and highlight my technical capabilities.
 
 ## Features
 
