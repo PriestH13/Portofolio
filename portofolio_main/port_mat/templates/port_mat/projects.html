@@ -8,11 +8,11 @@
 {% block content %}
     {% include 'port_mat/header.html' %}
     <section class="projects">
-        <h1>I miei Progetti</h1>
+        <h1>My Projects</h1>
         <!-- Form di ricerca -->
         <form method="GET" action="{% url 'projects' %}" class="search-form">
-            <input type="text" name="q" value="{{ query }}" placeholder="Cerca progetti..." aria-label="Cerca progetti">
-            <button type="submit" class="btn btn-primary">Cerca</button>
+            <input type="text" name="q" value="{{ query }}" placeholder="Search for projects" aria-label="Cerca progetti">
+            <button type="submit" class="btn btn-primary">Search</button>
         </form>
         <div class="portfolio-grid">
             {% for project in projects %}
@@ -45,22 +45,22 @@
                     <button class="toggle-description-btn" data-description="{{ project.description }}">Description</button>
                 </div>
 
-                <p class="project-technologies"><strong>Tecnologie:</strong> {{ project.technologies }}</p>
+                <p class="project-technologies"><strong>Technologies:</strong> {{ project.technologies }}</p>
                 <div class="project-links">
                     {% if project.github_link %}
-                    <a href="{{ project.github_link }}" target="_blank" class="btn btn-primary" aria-label="Vedi il codice su GitHub">
+                    <a href="{{ project.github_link }}" target="_blank" class="btn btn-primary" aria-label="See the code on GitHub">
                         <ion-icon name="logo-github" aria-hidden="true"></ion-icon> GitHub
                     </a>
                     {% endif %}
                     {% if project.demo_link %}
-                    <a href="{{ project.demo_link }}" target="_blank" class="btn btn-secondary" aria-label="Vedi la demo del progetto">
-                        <ion-icon name="play-circle-outline" aria-hidden="true"></ion-icon> Demo
+                    <a href="{{ project.demo_link }}" target="_blank" class="btn btn-secondary" aria-label="See the project link">
+                        <ion-icon name="play-circle-outline" aria-hidden="true"></ion-icon> Link
                     </a>
                     {% endif %}
                 </div>
             </div>
             {% empty %}
-                <p>Nessun progetto trovato.</p>
+                <p>No projects found.</p>
             {% endfor %}
         </div>
 
@@ -68,11 +68,11 @@
         {% if is_paginated %}
         <div class="pagination">
             {% if page_obj.has_previous %}
-                <a href="?{% if query %}q={{ query }}&{% endif %}page={{ page_obj.previous_page_number }}" class="btn btn-secondary">Precedente</a>
+                <a href="?{% if query %}q={{ query }}&{% endif %}page={{ page_obj.previous_page_number }}" class="btn btn-secondary">Previous</a>
             {% endif %}
-            <span>Pagina {{ page_obj.number }} di {{ paginator.num_pages }}</span>
+            <span>Page {{ page_obj.number }} di {{ paginator.num_pages }}</span>
             {% if page_obj.has_next %}
-                <a href="?{% if query %}q={{ query }}&{% endif %}page={{ page_obj.next_page_number }}" class="btn btn-secondary">Successivo</a>
+                <a href="?{% if query %}q={{ query }}&{% endif %}page={{ page_obj.next_page_number }}" class="btn btn-secondary">Next</a>
             {% endif %}
         </div>
         {% endif %}

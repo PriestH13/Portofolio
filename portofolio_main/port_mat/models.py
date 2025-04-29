@@ -60,3 +60,11 @@ class ContactInfo(models.Model):
     class Meta:
         verbose_name = "Contact Info"
         verbose_name_plural = "Contact Info"
+
+class Intro(models.Model):
+    nome = models.CharField(max_length=100)
+    descrizione = models.TextField()
+    immagine = models.ImageField(upload_to='images/')
+    
+    def __str__(self):
+        return self.nome
