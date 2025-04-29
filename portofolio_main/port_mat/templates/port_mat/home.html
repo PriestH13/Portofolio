@@ -24,15 +24,15 @@
     {% block content %}
         {% include 'port_mat/header.html' %}
         <section class="intro">
-            <img src="{% static 'images/profile_mateo.jpg' %}" alt="Foto Profilo di Mateo Prifti" class="intro-image">
+            <img src="{{ intro.immagine.url }}" alt="Foto Profilo di {{ intro.nome }}" class="intro-image">
             <div class="intro-text">
-                <h1>Mateo Prifti</h1>
-                <p>Full-Stack Web Developer con esperienza in Python, Django, JavaScript, HTML e CSS. Appassionato di sviluppo web e soluzioni scalabili.</p>
-                <a href="{% url 'about' %}" class="btn btn-primary">Scopri di più</a>
+                <h1>{{ intro.nome }}</h1>
+                <p>{{ intro.descrizione }}</p>
+                <a href="{% url 'about' %}" class="btn btn-primary">Learn more</a>
             </div>
         </section>
         <section class="services">
-            <h2>Servizi</h2>
+            <h2>Services</h2>
             <div class="services-grid">
                 {% for service in services %}
                 <div class="service-card">
@@ -40,7 +40,7 @@
                     <p>{{ service.description }}</p>
                 </div>
                 {% empty %}
-                <p>Nessun servizio disponibile.</p>
+                <p>No services available.</p>
                 {% endfor %}
             </div>
         </section>
@@ -68,7 +68,7 @@
                         {% endif %}
                     </div>
                     <h4>{{ project.title }}</h4>
-                    <a href="{% url 'projects' %}" class="btn btn-secondary">Vedi tutti i progetti</a>
+                    <a href="{% url 'projects' %}" class="btn btn-secondary">See all projects</a>
                 </div>
                 {% endfor %}
             </div>

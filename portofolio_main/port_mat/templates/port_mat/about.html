@@ -9,7 +9,7 @@
 {% block content %}
     {% include 'port_mat/header.html' %}
     <section class="about">
-        <h1>Chi sono</h1>
+        <h1>Who I am</h1>
         <div class="about-container">
             {% if about %}
                 {% if about.profile_image %}
@@ -20,7 +20,7 @@
                 <p class="about-text">{{ about.bio }}</p>
             {% else %}
                 <img src="{% static 'images/mateo.jpg' %}" alt="Foto di Mateo Prifti" class="profile-photo">
-                <p class="about-text">Nessuna descrizione disponibile. Aggiungi una sezione "About" nell'admin.</p>
+                <p class="about-text">No description available.</p>
             {% endif %}
         </div>
     </section>

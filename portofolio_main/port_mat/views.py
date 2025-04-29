@@ -1,6 +1,6 @@
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from django.shortcuts import render
-from .models import Projects, Service, About, ContactInfo
+from .models import Projects, Service, About, ContactInfo ,Intro
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
@@ -17,6 +17,7 @@ class HomeView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['services'] = Service.objects.all().order_by('created_at')
+        context['intro'] = Intro.objects.first()
         return context
 
 class AboutView(TemplateView):
