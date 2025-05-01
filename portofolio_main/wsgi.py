@@ -1,13 +1,12 @@
-# wsgi.py
 import os
 import sys
 from django.core.wsgi import get_wsgi_application
 
-# Aggiungi il percorso assoluto della directory radice del progetto
-PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, PROJECT_DIR)
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, PROJECT_ROOT)
 
-# Imposta il modulo delle impostazioni
+print(f"Python path: {sys.path}")
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'portofolio_main.settings')
 
 application = get_wsgi_application()
