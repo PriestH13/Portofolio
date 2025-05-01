@@ -1,11 +1,9 @@
-import os
 import sys
-from django.core.wsgi import get_wsgi_application
+import os
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-sys.path.insert(0, BASE_DIR)
-sys.path.insert(0, '/opt/render/project/src')  # Solo questo è necessario su Render
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'portofolio_main.settings')
 
+from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
