@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: portfolio
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn portofolio_main.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: portofolio_main.settings
+      - key: PYTHON_VERSION
+        value: 3.11
+
