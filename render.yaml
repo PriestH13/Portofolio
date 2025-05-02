@@ -1,17 +1,21 @@
+databases:
+  - name: portofolio_db
+    plan: free
+    region: oregon
+
 services:
   - type: web
-    name: portofolio
+    name: portofolio-app
     env: python
-    buildCommand: "pip install -r requirements.txt"  # Installa le dipendenze
-    startCommand: "gunicorn portofolio_main.wsgi:application"  # Avvia l'app con gunicorn
+    plan: free
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate"
+    startCommand: "gunicorn portofolio_main.wsgi:application"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: portofolio_main.settings
-      - key: DJANGO_SECRET_KEY
-        value: "django-insecure-bwz6^+r&i&va*t#umpaz*w64@k+1(*o2m)%=ojs@%gf@-xnaqc"
-      - key: DEBUG
-        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
       - key: ALLOWED_HOSTS
-        value: "priesth13.onrender.com"
+        value: portofolio-app.onrender.com
       - key: DATABASE_URL
-        value: "postgresql://portofolio_db_laqg_user:RoKrswhI3wmaOYpGjC2HJdy1JbtBQde9@dpg-d09atnh5pdvs73de8hs0-a.oregon-postgres.render.com/portofolio_db_laqg"
+        value: postgresql://portofolio_db_user:your_password@dpg-d09atnh5pdvs73de8hs0-a.oregon-postgres.render.com/portofolio_db
