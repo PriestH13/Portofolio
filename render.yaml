@@ -9,7 +9,7 @@ services:
     env: python
     plan: free
     buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate"
-    startCommand: "gunicorn portofolio_main.wsgi:application"
+    startCommand: "gunicorn portofolio_main.wsgi:application --chdir /opt/render/project/src --log-file -"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: portofolio_main.settings
