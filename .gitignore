@@ -1,6 +1,5 @@
 
 __pycache__/
-*.py[cod]
 *$py.class
 
 
@@ -35,4 +34,3 @@ Desktop.ini
 
 
 .env
-settings.py
