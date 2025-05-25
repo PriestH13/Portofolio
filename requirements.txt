@@ -1,4 +1,3 @@
-argopt==0.9.1
 asgiref==3.8.1
 certifi==2025.4.26
 charset-normalizer==3.4.2
@@ -9,24 +8,21 @@ dj-database-url==2.3.0
 Django==4.2.20
 django-analytical==3.1.0
 django-cloudinary-storage==0.3.0
-dotenv==0.9.9
-gunicorn==20.1.0
+gunicorn==20.1.0                  # Per deploy con WSGI
 h11==0.16.0
 idna==3.10
 packaging==25.0
-pillow==11.0.0
-psycopg2==2.9.10
-psycopg2-binary==2.9.10
-python-decouple==3.8
-python-dotenv==1.1.0
+pillow==11.0.0                    # Per gestione immagini
+psycopg2-binary==2.9.10           # Per PostgreSQL
+python-decouple==3.8             # Gestione configurazioni/env
+python-dotenv==1.1.0             # Alternativa usata da molti framework
 requests==2.32.3
-six==1.17.0
-sqlparse==0.5.3
-tabulate==0.9.0
-tqdm==4.67.1
+sqlparse==0.5.3                  # Necessario per Django
+tabulate==0.9.0                  # Utile per stampa tabellare (debug, CLI admin)
+tqdm==4.67.1                     # Progress bar (opzionale, ma utile)
 typing_extensions==4.13.0
 tzdata==2025.2
 urllib3==2.4.0
-uvicorn==0.34.2
-waitress==3.0.2
-whitenoise==6.9.0
+uvicorn==0.34.2                  # Solo se usi ASGI (es: FastAPI o Django + Channels)
+waitress==3.0.2                  # Alternativa WSGI per Windows/Linux
+whitenoise==6.9.0                # Per servire file statici in produzione
